@@ -1,4 +1,4 @@
-package ru.trubin23.tasksmvpconductor;
+package ru.trubin23.room;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

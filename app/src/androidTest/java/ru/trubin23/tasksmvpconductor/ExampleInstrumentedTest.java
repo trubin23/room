@@ -1,4 +1,4 @@
-package ru.trubin23.tasksmvpconductor;
+package ru.trubin23.room;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("ru.trubin23.tasksmvpconductor", appContext.getPackageName());
+        assertEquals("ru.trubin23.room", appContext.getPackageName());
     }
 }

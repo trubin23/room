@@ -1,4 +1,4 @@
-package ru.trubin23.tasksmvpconductor;
+package ru.trubin23.room;
 
 import org.junit.Test;
 
