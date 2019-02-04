@@ -5,7 +5,7 @@ import android.arch.persistence.room.Room;
 
 public class App extends Application {
 
-    public static App INSTANCE;
+    private static App INSTANCE;
 
     private AppDatabase mDatabase;
 
@@ -14,6 +14,7 @@ public class App extends Application {
         super.onCreate();
         INSTANCE = this;
         mDatabase = Room.databaseBuilder(this, AppDatabase.class, "database")
+                .allowMainThreadQueries()
                 .build();
     }
 
