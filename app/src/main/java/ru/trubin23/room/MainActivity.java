@@ -12,7 +12,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
+    private void testQueries() {
         AppDatabase database = App.getInstance().getDatabase();
         EmployeeDao employeeDao = database.employeeDao();
 
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         bobEmployee.name = "Bob";
         bobEmployee.salary = 20000;
 
-        for (Employee employee:employeeDao.getAll()){
+        for (Employee employee : employeeDao.getAll()) {
             Log.d(TAG, employee.toString());
             employeeDao.delete(employee);
         }
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         employeeDao.insert(johnEmployee);
         employeeDao.insert(bobEmployee);
 
-        for (Employee employee:employeeDao.getAll()){
+        for (Employee employee : employeeDao.getAll()) {
             Log.d(TAG, employee.toString());
         }
 
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         employeeDao.delete(johnEmployee);
 
-        for (Employee employee:employeeDao.getAll()){
+        for (Employee employee : employeeDao.getAll()) {
             Log.d(TAG, employee.toString());
         }
     }
