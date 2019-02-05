@@ -1,22 +1,35 @@
 package ru.trubin23.room;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity
+@Entity(indices = {
+        @Index("salary"),
+        @Index(value = {"first_name", "last_name"}, unique = true)
+})
 public class Employee {
 
     @PrimaryKey(autoGenerate = true)
     public long id;
 
-    public String name;
+    @ColumnInfo(name = "first_name")
+    public String firstName;
+
+    @ColumnInfo(name = "last_name")
+    public String lastName;
 
     public int salary;
+
+    @ColumnInfo(index = true)
+    public int age;
 
     @Override
     public String toString() {
         return "id = " + String.valueOf(id) + " ; " +
-                "name = " + name + " ; " +
+                "firstName = " + firstName + " ; " +
+                "lastName = " + lastName + " ; " +
                 "salary = " + String.valueOf(salary);
     }
 }

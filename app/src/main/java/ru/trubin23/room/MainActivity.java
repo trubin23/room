@@ -20,12 +20,14 @@ public class MainActivity extends AppCompatActivity {
 
         Employee johnEmployee = new Employee();
         johnEmployee.id = 1;
-        johnEmployee.name = "John";
+        johnEmployee.firstName = "John";
+        johnEmployee.lastName = "Smith";
         johnEmployee.salary = 10000;
 
         Employee bobEmployee = new Employee();
         bobEmployee.id = 2;
-        bobEmployee.name = "Bob";
+        bobEmployee.firstName = "Bob";
+        bobEmployee.lastName = "Johnson";
         bobEmployee.salary = 20000;
 
         for (Employee employee : employeeDao.getAll()) {

@@ -6,12 +6,14 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
 import static android.arch.persistence.room.ColumnInfo.TEXT;
+import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "table_car",
-        foreignKeys = @ForeignKey(entity = Employee.class, parentColumns = "id", childColumns = "employee_id"))
+        foreignKeys = @ForeignKey(entity = Employee.class, parentColumns = "id",
+                childColumns = "employee_id", onDelete = CASCADE))
 public class Car {
 
-    public Car(long id, String model, int year){
+    public Car(long id, String model, int year) {
         this.id = id;
         this.model = model;
         this.year = year;
