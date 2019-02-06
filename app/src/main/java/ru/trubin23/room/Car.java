@@ -6,8 +6,6 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 
-import static android.arch.persistence.room.ColumnInfo.INTEGER;
-import static android.arch.persistence.room.ColumnInfo.REAL;
 import static android.arch.persistence.room.ColumnInfo.TEXT;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 

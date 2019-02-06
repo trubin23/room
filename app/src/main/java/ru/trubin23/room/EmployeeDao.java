@@ -28,6 +28,18 @@ public interface EmployeeDao {
     @Query("SELECT * FROM employee WHERE id = :id")
     Employee getById(long id);
 
+    @Query("SELECT * FROM employee WHERE salary = :minSalary")
+    List<Employee> getAllWithSalaryMoreThan(int minSalary);
+
+    @Query("SELECT * FROM employee WHERE salary BETWEEN :minSalary AND :maxSalary")
+    List<Employee> getAllWithSalaryBetween(int minSalary, int maxSalary);
+
+    @Query("SELECT * FROM employee WHERE first_name LIKE :search OR last_name LIKE :search")
+    List<Employee> getAllWithNameLike(String search);
+
+    @Query("SELECT * FROM employee WHERE id IN (:idList)")
+    List<Employee> getByIdList(List<Long> idList);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insert(Employee employee);
 
