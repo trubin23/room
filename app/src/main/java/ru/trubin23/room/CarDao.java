@@ -10,7 +10,7 @@ import java.util.List;
 @Dao
 public interface CarDao {
 
-    @Query("SELECT * FROM car")
+    @Query("SELECT * FROM table_car")
     List<Car> getAll();
 
     @Insert

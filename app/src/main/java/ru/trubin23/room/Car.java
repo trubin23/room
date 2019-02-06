@@ -5,6 +5,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
+import static android.arch.persistence.room.ColumnInfo.INTEGER;
+import static android.arch.persistence.room.ColumnInfo.REAL;
 import static android.arch.persistence.room.ColumnInfo.TEXT;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
@@ -25,11 +27,11 @@ public class Car {
     @ColumnInfo(name = "model_name")
     private String model;
 
-    @ColumnInfo(typeAffinity = TEXT)
-    private int year;
+    //@ColumnInfo(typeAffinity = TEXT)
+    public int year;
 
     @ColumnInfo(name = "employee_id")
-    private long employeeId;
+    public long employeeId;
 
     public long getId() {
         return id;
@@ -41,9 +43,5 @@ public class Car {
 
     public int getYear() {
         return year;
-    }
-
-    public long getEmployeeId() {
-        return employeeId;
     }
 }
