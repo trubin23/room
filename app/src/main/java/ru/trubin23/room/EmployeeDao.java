@@ -1,5 +1,6 @@
 package ru.trubin23.room;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -13,7 +14,16 @@ import java.util.List;
 public interface EmployeeDao {
 
     @Query("SELECT * FROM employee")
-    List<Employee> getAll();
+    LiveData<List<Employee>> getAll();
+
+    //@Query("SELECT * FROM employee")
+    //List<Employee> getAll();
+
+    //@Query("SELECT * FROM employee")
+    //Employee[] getAll();
+
+    //@Query("SELECT * FROM employee")
+    //Cursor getAll();
 
     @Query("SELECT * FROM employee WHERE id = :id")
     Employee getById(long id);

@@ -1,9 +1,7 @@
 package ru.trubin23.room;
 
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,10 +11,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        testQueries2();
     }
-
+/*
     private void testQueries2() {
         AppDatabase database = App.getInstance().getDatabase();
         EmployeeDao employeeDao = database.employeeDao();
@@ -44,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, employee.toString());
         }
     }
-
+*/
+/*
     private void testQueries() {
         AppDatabase database = App.getInstance().getDatabase();
         EmployeeDao employeeDao = database.employeeDao();
@@ -86,4 +83,5 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, employee.toString());
         }
     }
+*/
 }

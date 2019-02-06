@@ -4,6 +4,7 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 
 import static android.arch.persistence.room.ColumnInfo.INTEGER;
 import static android.arch.persistence.room.ColumnInfo.REAL;
@@ -27,7 +28,8 @@ public class Car {
     @ColumnInfo(name = "model_name")
     private String model;
 
-    //@ColumnInfo(typeAffinity = TEXT)
+    @ColumnInfo(typeAffinity = TEXT)
+    @TypeConverters(DateConverter.class)
     public int year;
 
     @ColumnInfo(name = "employee_id")
