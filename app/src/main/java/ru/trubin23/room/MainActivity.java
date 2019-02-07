@@ -11,6 +11,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        testQueries3();
+    }
+
+    private void testQueries3(){
+        AppDatabase database = App.getInstance().getDatabase();
+        EmployeeDao employeeDao = database.employeeDao();
     }
 /*
     private void testQueries2() {

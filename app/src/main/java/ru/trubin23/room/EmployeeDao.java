@@ -10,6 +10,8 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
+
 @Dao
 public interface EmployeeDao {
 
@@ -25,8 +27,11 @@ public interface EmployeeDao {
     //@Query("SELECT * FROM employee")
     //Cursor getAll();
 
-    @Query("SELECT * FROM employee WHERE id = :id")
-    Employee getById(long id);
+    //@Query("SELECT * FROM employee WHERE id = :id")
+    //Employee getById(long id);
+
+    @Query("SELECT * FROM employee")
+    Flowable<List<Employee>> getAll();
 
     @Query("SELECT * FROM employee WHERE salary = :minSalary")
     List<Employee> getAllWithSalaryMoreThan(int minSalary);
