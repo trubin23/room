@@ -58,9 +58,15 @@ public interface EmployeeDao {
     @Update
     int update(List<Employee> employeeList);
 
+    @Update
+    int delete(List<Employee> employeeList);
+
+    @Query("UPDATE employee SET salary = :newSalary WHERE id IN (:idList)")
+    int updateSalaryByIdList(List<Long> idList, int newSalary);
+
     @Delete
     void delete(Employee employee);
 
-    @Update
-    int delete(List<Employee> employeeList);
+    @Query("DELETE FROM employee WHERE id IN (:idList)")
+    int deleteByIdList(List<Long> idList);
 }
