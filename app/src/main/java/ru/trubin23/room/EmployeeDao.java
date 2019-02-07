@@ -40,6 +40,9 @@ public interface EmployeeDao {
     @Query("SELECT * FROM employee WHERE id IN (:idList)")
     List<Employee> getByIdList(List<Long> idList);
 
+    @Query("SELECT first_name, last_name FROM employee")
+    List<Name> getNames();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insert(Employee employee);
 
