@@ -2,6 +2,12 @@ package ru.trubin23.room;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+
+import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,9 +21,46 @@ public class MainActivity extends AppCompatActivity {
         testQueries3();
     }
 
-    private void testQueries3(){
+    private void testQueries3() {
         AppDatabase database = App.getInstance().getDatabase();
         EmployeeDao employeeDao = database.employeeDao();
+
+        Employee johnEmployee = new Employee();
+        johnEmployee.id = 1;
+        johnEmployee.firstName = "John";
+        johnEmployee.lastName = "Smith";
+        johnEmployee.salary = 10000;
+
+        Employee bobEmployee = new Employee();
+        bobEmployee.id = 2;
+        bobEmployee.firstName = "Bob";
+        bobEmployee.lastName = "Johnson";
+        bobEmployee.salary = 20000;
+
+        employeeDao.deleteAll();
+
+        employeeDao.insert(johnEmployee);
+        employeeDao.insert(bobEmployee);
+
+        employeeDao.getAll()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<Employee>>() {
+                    @Override
+                    public void accept(List<Employee> employees) {
+                        for (Employee employee : employees) {
+                            Log.d(TAG, employee.toString());
+                        }
+                    }
+                });
+
+        employeeDao.getById(1)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Employee>() {
+                    @Override
+                    public void accept(Employee employee) {
+                        Log.d(TAG, employee.toString());
+                    }
+                });
     }
 /*
     private void testQueries2() {

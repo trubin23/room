@@ -1,6 +1,5 @@
 package ru.trubin23.room;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -15,8 +14,8 @@ import io.reactivex.Flowable;
 @Dao
 public interface EmployeeDao {
 
-    @Query("SELECT * FROM employee")
-    LiveData<List<Employee>> getAll();
+    //@Query("SELECT * FROM employee")
+    //LiveData<List<Employee>> getAll();
 
     //@Query("SELECT * FROM employee")
     //List<Employee> getAll();
@@ -32,6 +31,9 @@ public interface EmployeeDao {
 
     @Query("SELECT * FROM employee")
     Flowable<List<Employee>> getAll();
+
+    @Query("SELECT * FROM employee WHERE id = :id")
+    Flowable<Employee> getById(long id);
 
     @Query("SELECT * FROM employee WHERE salary = :minSalary")
     List<Employee> getAllWithSalaryMoreThan(int minSalary);
@@ -68,6 +70,9 @@ public interface EmployeeDao {
 
     @Query("UPDATE employee SET salary = :newSalary WHERE id IN (:idList)")
     int updateSalaryByIdList(List<Long> idList, int newSalary);
+
+    @Query("DELETE FROM employee")
+    void deleteAll();
 
     @Delete
     void delete(Employee employee);
