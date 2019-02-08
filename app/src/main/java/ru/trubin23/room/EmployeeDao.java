@@ -29,6 +29,9 @@ public interface EmployeeDao {
     //@Query("SELECT * FROM employee WHERE id = :id")
     //Employee getById(long id);
 
+    @Query("SELECT * FROM employee WHERE id = :id")
+    Flowable<List<Employee>> getByIdAsList(long id);
+
     @Query("SELECT * FROM employee")
     Flowable<List<Employee>> getAll();
 
