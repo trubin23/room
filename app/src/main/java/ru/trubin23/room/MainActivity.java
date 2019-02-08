@@ -9,6 +9,9 @@ import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
+import io.reactivex.observers.DisposableMaybeObserver;
+import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -81,6 +84,41 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void accept(List<Employee> employees) {
                         Log.d(TAG, String.valueOf(employees.size()));
+                    }
+                });
+
+        employeeDao.getSingleEmployeeById(1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DisposableSingleObserver<Employee>() {
+                    @Override
+                    public void onSuccess(Employee employee) {
+                        Log.d(TAG, "getSingleEmployeeById: " + employee.toString());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(TAG, "getSingleEmployeeById: error");
+                    }
+                });
+
+        employeeDao.getMaybeEmployeeById(1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DisposableMaybeObserver<Employee>() {
+                    @Override
+                    public void onSuccess(Employee employee) {
+                        Log.d(TAG, "getMaybeEmployeeById: " + employee.toString());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(TAG, "getMaybeEmployeeById: error");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "getMaybeEmployeeById: complete");
                     }
                 });
     }

@@ -10,6 +10,8 @@ import android.arch.persistence.room.Update;
 import java.util.List;
 
 import io.reactivex.Flowable;
+import io.reactivex.Maybe;
+import io.reactivex.Single;
 
 @Dao
 public interface EmployeeDao {
@@ -37,6 +39,12 @@ public interface EmployeeDao {
 
     @Query("SELECT * FROM employee WHERE id = :id")
     Flowable<Employee> getById(long id);
+
+    @Query("SELECT * FROM employee WHERE id = :id")
+    Single<Employee> getSingleEmployeeById(long id);
+
+    @Query("SELECT * FROM employee WHERE id = :id")
+    Maybe<Employee> getMaybeEmployeeById(long id);
 
     @Query("SELECT * FROM employee WHERE salary = :minSalary")
     List<Employee> getAllWithSalaryMoreThan(int minSalary);
