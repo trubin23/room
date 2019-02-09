@@ -9,6 +9,9 @@ import java.util.List;
 public interface DepartmentDao {
 
     @Query("SELECT id, name FROM department")
-    List<DepartmentWithEmployees> getDepartmentWithEmployees();
+    List<DepartmentWithStudents> getDepartmentWithEmployees();
+
+    @Query("SELECT * FROM department")
+    List<DepartmentWithSelectStudents> getDepartmentWithSelectStudents();
 
 }

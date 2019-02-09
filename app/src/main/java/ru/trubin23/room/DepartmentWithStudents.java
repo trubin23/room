@@ -4,12 +4,12 @@ import android.arch.persistence.room.Relation;
 
 import java.util.List;
 
-public class DepartmentWithEmployees {
+public class DepartmentWithStudents {
 
     public int id;
 
     public String name;
 
     @Relation(parentColumn = "id", entityColumn = "department_id")
-    public List<Employee> employees;
+    public List<Student> students;
 }
