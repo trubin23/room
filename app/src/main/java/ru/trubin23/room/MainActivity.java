@@ -22,9 +22,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        testQueries3();
     }
-
+/*
     private void testQueries3() {
         AppDatabase database = App.getInstance().getDatabase();
         EmployeeDao employeeDao = database.employeeDao();
@@ -122,7 +121,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
+*/
+/*
     private void testQueries2() {
         AppDatabase database = App.getInstance().getDatabase();
         EmployeeDao employeeDao = database.employeeDao();
@@ -155,7 +155,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
+*/
+/*
     private void testQueries() {
         AppDatabase database = App.getInstance().getDatabase();
         EmployeeDao employeeDao = database.employeeDao();
@@ -208,4 +209,5 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+*/
 }
