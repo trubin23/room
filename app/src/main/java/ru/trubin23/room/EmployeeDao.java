@@ -5,8 +5,10 @@ import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.TypeConverters;
 import android.arch.persistence.room.Update;
 
+import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Flowable;
@@ -90,4 +92,7 @@ public interface EmployeeDao {
 
     @Query("DELETE FROM employee WHERE id IN (:idList)")
     int deleteByIdList(List<Long> idList);
+
+    @Query("SELECT * FROM employee WHERE birthday = :birthdayDate")
+    Employee getByDate(@TypeConverters({DataConverter.class}) Date birthdayDate);
 }

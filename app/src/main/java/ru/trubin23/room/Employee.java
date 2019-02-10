@@ -6,6 +6,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 import android.graphics.Bitmap;
 
 import java.util.List;
@@ -35,6 +36,11 @@ public class Employee {
 
     @Ignore
     public Bitmap avatar;
+
+    @TypeConverters({HobbiesConverter.class})
+    public List<String> hobbies;
+
+    public long birthday;
 
     @Override
     public String toString() {
