@@ -8,6 +8,8 @@ import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.graphics.Bitmap;
 
+import java.util.List;
+
 @Entity(indices = {
         @Index("salary"),
         @Index(value = {"first_name", "last_name"}, unique = true)
